@@ -2,7 +2,7 @@ Imports System.IO
 
 Public Class BL
 #Region "VARIABLES DE INSTANCIA"
-    Dim fechaDesde As Date = Today.AddDays(-30)
+    Dim fechaDesde As Date = Today.AddDays(-20)
     Dim directorioOrigen As New IO.DirectoryInfo("d:\usb\")
     Dim directorioBackUp As New DirectoryInfo("d:\backup\" & Now.Year.ToString() & "-" & Now.Month.ToString() & "-" & Now.Day.ToString() & "\")
 #End Region
@@ -24,7 +24,7 @@ Public Class BL
         Dim subDir As DirectoryInfo
         Try
             For Each subDir In directorioOrigen.GetDirectories()
-                If subDir.CreationTime.Date = fechaDesde Then
+                If subDir.CreationTime.Date <= fechaDesde Then
                     Dim subDirectorioDestino As New DirectoryInfo(directorioBackUp.ToString() & subDir.ToString())
                     My.Computer.FileSystem.MoveDirectory(subDir.FullName, subDirectorioDestino.FullName, True)
                 End If
