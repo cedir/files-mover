@@ -30,8 +30,10 @@ Public Class BL
                         'esta linea de prueba la dejo para futuras pruebas, ya que nos indica el formato de salida de una estructura de directorio.
                         'en un futuro, optar por configurar la estructura desde archivo configurable
 
-                        'My.Computer.FileSystem.WriteAllText("e:\prueba.txt", directorioDia.FullName & vbCrLf & vbCrLf, True)
-                        My.Computer.FileSystem.CopyDirectory(directorioDia.FullName, directorioBackUp.FullName & "\" & directorioMes.Name & directorioDia.Name, True)
+
+                        'My.Computer.FileSystem.WriteAllText("d:\backup videos\listado.txt", directorioBackUp.FullName & directorioMes.Name & "\" & directorioDia.Name & vbCrLf & vbCrLf, True)
+                        My.Computer.FileSystem.MoveDirectory(directorioDia.FullName, directorioBackUp.FullName & directorioMes.Name & "\" & directorioDia.Name, True)
+
                     End If
                 Next
             Next
